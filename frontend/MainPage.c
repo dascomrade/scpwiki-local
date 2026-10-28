@@ -1,21 +1,55 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lib/cJSON.h"
-
+#include <stdbool.h>
+#include <time.h>
 #include <gtk/gtk.h>
+#include <string.h>
+#include <ctype.h>
+#include "lib/cJSON.h" // not a standard library, so we use quotes ("")
 
-/*
- * int InputValidation()
- * {}
- */
+
+
+
+int RNG(){ //get a random number for the user to open a random SCP page we'd permit them to'
+
+    int MAX = 9999; // its exclusive so the upperbound is not included .curently there is no SCP-9999 or 100000
+    int MIN = 2; //never land the random page on SCP-001
+
+    srand(time(NULL));
+    int randomSCP =  rand() % (MAX - MIN) + MIN;
+
+    return randomSCP;
+
+}
+
+
+bool InputValidation(const char *UserInput){
+    int InputLength = strlen(UserInput);
+
+    if(InputLength == 0){
+        return false;
+    }
+
+    for(int i =0; i < InputLength; i++){
+        if(!(isdigit((unsigned char)UserInput[i]))){
+            return false;
+        }
+    }
+    return true;
+}
+
+
 static void InputSystem(GtkButton *button, gpointer user_data){
 
     GtkEntry *entry = GTK_ENTRY(user_data);
     const gchar *SCPINPUT = gtk_entry_get_text(entry);
 
-    printf("CALLED \n");
+    if(InputValidation(SCPINPUT) == true){
+        printf("User Entered %s \n", SCPINPUT);
+    }
 
 }
+
 static void activate(GtkApplication *app, gpointer user_data){
 
     GtkWidget *window; //create thw window object
