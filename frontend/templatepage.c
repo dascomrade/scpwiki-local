@@ -30,9 +30,6 @@ static void activate(GtkApplication *app, gpointer user_data){
 
 int main(int argc, char **argv)
 {
-    int suc; //success or fail
-    
-
     GtkApplication *app;
 
     app = gtk_application_new("in.main", G_APPLICATION_DEFAULT_FLAGS);
@@ -42,6 +39,4 @@ int main(int argc, char **argv)
     suc = g_application_run(G_APPLICATION(app), argc, argv);
 
     g_object_unref(app);
-
-    return suc;
 }
