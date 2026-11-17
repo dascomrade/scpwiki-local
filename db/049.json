@@ -1,0 +1,14 @@
+{
+	"SRC": "SCP",
+	"ID":	"049",
+	"Tags":	["Humanoid", "Sapient"],
+	"Containment Class":	"Keter",
+	"Disruption Class":	"Keneq",
+	"Risk Class":	"Danger",
+	"Found in":	{
+		"Country":	"France"
+	},
+	"Licensing":	{
+		"Article:":	"\"SCP-049\" by Gabriel Jade, rewritten by djkaktus & Gabriel Jade, from the SCP Wiki. Source: https://scpwiki.com/scp-049. Licensed under CC BY-SA."
+	}
+}

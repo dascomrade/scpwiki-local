@@ -3,7 +3,7 @@
 
 
 
-void loadResult(char **result, scrollable, ResultsList){
+void loadResult(char **result, GtkWidget *scrollable, GtkWidget *ResultsList){
 
     GtkWidget *ResultContainer;
     GtkWidget *ResultTitle= gtk_link_button_new_with_label (const gchar* uri, ResultItem);
@@ -32,7 +32,7 @@ gtk_container_add(GTK_CONTAINER(window), scrollable);
 GtkWidget *ResultsList;
 ResultsList = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 gtk_container_add(GTK_CONTAINER(window), ResultsList);
-loadResult(scrollable, ResultsList);
+loadResult(result, scrollable, ResultsList);
 
 
 gtk_window_set_default_size(GTK_WINDOW(window), 720, 1024);

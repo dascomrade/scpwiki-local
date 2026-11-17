@@ -33,6 +33,7 @@ bool InputValidation(const char *UserInput){
         return false;
     }
 
+    char *fixedInput = "";
 
     for(int i =0; i < InputLength; i++){
         if(!(isdigit((unsigned char)UserInput[i]))){
@@ -41,7 +42,7 @@ bool InputValidation(const char *UserInput){
             }
             else{
             SearchTerm = true;
-            UserInput[i] = tolower(UserInput[i]);
+            fixedInput[i] = tolower(UserInput[i]);
             }
         }
     }
@@ -123,7 +124,7 @@ int main(int argc, char **argv)
 
     g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
 
-    suc = g_application_run(G_APPLICATION(app), argc, argv);
+    //printf(g_application_run(G_APPLICATION(app), argc, argv));
 
     g_object_unref(app);
 }
