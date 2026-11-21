@@ -33,11 +33,11 @@ bool InputValidation(const char *UserInput){
         return false;
     }
 
-    char *fixedInput = "";
+    char *fixedInput = malloc(InputLength +1);
 
     for(int i =0; i < InputLength; i++){
         if(!(isdigit((unsigned char)UserInput[i]))){
-            if(!(isalnum((unsigned char)UserInput[i]))){
+            if(!(isalnum((unsigned char)UserInput[i] && (UserInput[i] == ' ')))){
              return false;
             }
             else{
@@ -46,6 +46,10 @@ bool InputValidation(const char *UserInput){
             }
         }
     }
+    fixedInput[InputLength] = '\0';
+    printf("%s", fixedInput);
+
+    free(fixedInput);
     return true; //replace with log of either open file or initiate search engine
 }
 
@@ -124,7 +128,9 @@ int main(int argc, char **argv)
 
     g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
 
-    //printf(g_application_run(G_APPLICATION(app), argc, argv));
+    int status = g_application_run(G_APPLICATION(app), argc, argv);
+
+    printf("%d", status);
 
     g_object_unref(app);
 }
